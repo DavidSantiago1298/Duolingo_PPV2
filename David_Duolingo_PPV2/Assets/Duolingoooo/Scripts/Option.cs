@@ -9,27 +9,25 @@ public class Option : MonoBehaviour
     public int OptionID;
     public string OptionName;
 
-    //Se obtiene el componente TMP del texto para poder actualizarlo
-    //al texto que tiene la pregunta en el scriptable object.
+    //Crea el texto
     void Start()
     {
         transform.GetChild(0).GetComponent<TMP_Text>().text = OptionName;
     }
 
-    //Función que actualiza el texto.
+    //Actualiza el texto.
     public void UpdateText()
     {
-        //Obtiene el children que tiene el texto para
-        // ser actualizado al de las listas del scriptable object
+        //Actualiza el hijo del texto
         transform.GetChild(0).GetComponent<TMP_Text>().text = OptionName;
     }
 
-    // Función que checa que se selecione una de las opciones
+    //Permite selecionar una opcion
     public void SelectOption()
     {
-        //Asigna la respuesta correcta en función del ID que se encuentre en el script de Subject.
+        //Asigna  cual es la respuesta correcta 
         LevelManager.Instance.SetPlayerAnswer(OptionID);
-        //Comprueba que con la funcion levelmanager se seleccione una respuesta y cheque si se puede interactuar con los botones
+        //Comprueba que se seleccione una respuesta 
         LevelManager.Instance.CheckPlayerState();
     }
 }

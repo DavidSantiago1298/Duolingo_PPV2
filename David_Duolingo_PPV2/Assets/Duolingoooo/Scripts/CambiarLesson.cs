@@ -8,7 +8,7 @@ public class CambiarLesson : MonoBehaviour
     public bool pasarNivel;
     public int IndiceNivel;
 
-    //Permite cambair de escena al presionar space
+    //Permite cambair de escena al presionar espacio
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

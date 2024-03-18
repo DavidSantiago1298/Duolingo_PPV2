@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
             //Busca si estamos en la lección actual.
             currentLesson = Lesson.leccionList[currentQuestion];
 
-            //Establecemos la pregunta.
+            //Establece la pregunta.
             question = currentLesson.lessons;
 
             //Establece cual es la pregunta correcta convirtiendola en correctAnswer.
@@ -71,11 +71,11 @@ public class LevelManager : MonoBehaviour
             //Llama a la UI para que aparezca la pregunta.
             textQuestion.text = question;
 
-            //Establecemos las opciones con for que recorre todas las opciones.
+            //Establece las opciones 
             for (int i = 0; i < currentLesson.options.Count; i++)
             {
 
-                // Dice que cada Question tiene un componente Option
+                // Dice que cada Question tiene un  Option
                 Question[i].GetComponent<Option>().OptionName = currentLesson.options[i];
 
                 Question[i].GetComponent<Option>().OptionID = i;
@@ -86,8 +86,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            //Si no se cumple las reglas anteriores se manda un mensaje el cual dice:
-            // "llegamos al final de las preguntas."
+           //Lanza un mensaje al acabar
             Debug.Log("Fin de las preguntas");
         }
     }
@@ -109,16 +108,14 @@ public class LevelManager : MonoBehaviour
                 // Se revisa si la respuesta es correcta o no es correcta.
                 if (isCorrect)
                 {
-                    //Si sí es correcta, se actualizara el componente Image
-                    //y se pondra de color verde para referencias que esta correcta la respuesta.
+                    //Si es correcta hace que image sea verde
                     AnswerContainer.GetComponent<Image>().color = Green;
-                    //Se actualiza el texto, usando un arreglo para poner el mensaje que deseamos mostrar y las variables
-                    //string que contienen una cadena de letras.
+                   //Confrima que es correcta y da una respuesta
                     textGood.text = "Respuesta correcta. " + question + ": " + correctAnswer;
                 }
                 else
                 {
-                    //Si no es correcta actualiza image al color rojo
+                    //Si no es correcta actualiza image a un rojo
                     AnswerContainer.GetComponent<Image>().color = Red;
                     //Actualiza para decir que esta incorrecta la respuesta
                     textGood.text = "Respuesta incorrecta. " + question + ": " + correctAnswer;
@@ -133,10 +130,7 @@ public class LevelManager : MonoBehaviour
                 answerFromPlayer = 9;
                 
             }
-            else
-            {
-                //Cambia la escena
-            }
+            
         }
     }
 
@@ -146,7 +140,7 @@ public class LevelManager : MonoBehaviour
         //Ajusta el tiempo que deseas mostrar el resultado
         yield return new WaitForSeconds(2.5f);
 
-        //Ocultar el contenedor de respuestas.
+        //Oculta el contenedor de respuestas.
         AnswerContainer.SetActive(false);
 
         //Carga una nueva pregunta
@@ -157,29 +151,26 @@ public class LevelManager : MonoBehaviour
         CheckPlayerState();
     }
 
-    //Función que asigna la respuesta del jugador
+    //Asigna la respuesta del jugador
     public void SetPlayerAnswer(int _answer)
     {
-     //Esta línea actualiza la respuesta del jugador con el valor proporcionado como argumento a la función.
         answerFromPlayer = _answer;
     }
 
-    //Revisa si el jugador interactua con un boton para cambiar el color de los botones 
+    //Revisa si el jugador interactua con un boton para cambiarle el color 
     public bool CheckPlayerState()
     {
         // Checamos que al interactuar con los botones, estos cambien de color al ser seleccionados.
         if (answerFromPlayer != 9)
         {
-            //Si no se interactua se pondra de color gris indicando que se puede interactuar con el.
-            //Actualiza el button para hacer que se pueda pulsar otravez
+            /
             CheckButton.GetComponent<Button>().interactable = true;
             //Actualiza image para cambiar el color.
             CheckButton.GetComponent<Image>().color = Color.grey;
             return true;
-        }
         else
         {
-            // Si no sí interactua hace que se ponga de color blanco 
+        }
             CheckButton.GetComponent<Button>().interactable = false;
             //Cambia el color de image
             CheckButton.GetComponent<Image>().color = Color.white;

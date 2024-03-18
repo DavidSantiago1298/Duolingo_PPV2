@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Sirve para poder trabajar con los prefabs
+
 [System.Serializable]
 
 public class Subject
